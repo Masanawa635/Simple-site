@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Hello, World!</title>
+  <style>
+  body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #007bb5;
+  }
+  .loading-bar-container {
+    width: 100%;
+    max-width: 300px;
+    background-color: #b3e5fc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .loading-bar {
+    width: 0;
+    height: 20px;
+    background-color: #007bb5;
+  }
+  .roro{
+    margin-left: 100px;
+    margin-top: 20px;
+    height: 50px;
+    width: 50px;
+    border: 10px solid #b3e5fc;
+    border-top: 10px solid #007bb5;
+    animation: spin 3s linear infinite;
+    border-radius: 50%;
+    display: none;
+  }
+  @keyframes spin{
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }
+  .bye{
+    font-size: 30px;
+    display: none;
+  }
+  #imoji{
+    font-size: 30px;
+    font-width: 900;
+    display: none;
+    margin-top: 50px;
+  }
+  </style>
+</head>
+<body>
+  <div>
+    <div id="welcome">WELCOM TO MASANAWA PAGE</div>
+    <div class="loading-bar-container" id="mainC">
+      <div class="loading-bar" id="loadingBar"></div>
+    </div>
+        <div id="byeBye" class="bye">Please be patient <br/>But it will never end</div>
+    <div class="roro" id="rotate"></div>
+    <div id="imoji">Successefull! </div>
+  </div>
+   <script>
+        window.onload = function() {
+            const loadingBar = document.getElementById("loadingBar");
+            const welcome = document.getElementById("welcome");
+            const byeBye = document.getElementById("byeBye");
+            const rotate = document.getElementById("rotate");
+            const imoji = document.getElementById("imoji");
+            let width = 0;
+            const interval = setInterval(function () {
+                if (width < 100) {
+                    width++;
+                    loadingBar.style.width = width + '%';
+                }else if(width >= 100){
+                  loadingBar.style.display = "none";
+                  welcome.style.display = "none";
+                  byeBye.style.display = "block";
+                  rotate.style.display = "block";
+                  imoji.style.display = "block";
+                }
+            }, 20); // Total loading time of 7 seconds
+        };
+    </script>
+</body>
+</html>
